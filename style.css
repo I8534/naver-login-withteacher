@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  list-style: none;
+}
+
+.global-header {
+  position: relative;
+  max-width: 768px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+}
+
+.logo img {
+  width: 240px;
+}
+
+.lang {
+  position: absolute;
+  right: 10px;
+}
+
+.join-form {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+section label {
+  display: flex;
+}
+
+label p {
+  width: calc(100% - 30px);
+  /* 100프로 중에 30픽셀 뺀 값을 너의 너비로 가져라 */
+  font-size: 18px;
+  font-weight: 700;
+}
+
+label input[type="checkbox"] {
+  display: none;
+}
+/* 인풋요소 중에 타입이 체크박스인 애들만 선택하겠다. */
+
+.checkbox-img {
+  margin-top: 2px;
+  margin-right: 8px;
+}
+
+.total .checkbox-img {
+  width: 24px;
+  height: 24px;
+  background-image: url(./images/pc_check_off_24.png);
+}
+
+.total .checkbox-img.checked {
+  width: 24px;
+  height: 24px;
+  background-image: url(./images/pc_check_on_l_24.png);
+}
+
+/* 체크박스 이미지랑 체크드랑 같이 있을 땐 on을 보여주고 체크박스 이미지만 있을 땐 off를 보여준다.
+그래서 굳이 디스플레이 논을 할 필요가 없다.
+그러면 체크드에만 적용되는 것을 입력하고 싶으면 .total .checked */
+
+.agree-list {
+  margin-top: 40px;
+}
+
+.agree {
+  margin-bottom: 40px;
+}
+
+.agree:last-child {
+  margin-bottom: 0;
+}
+
+.agree .checkbox-img {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/pc_chcek_off_s_20.png);
+}
+
+.agree .checkbox-img.checked {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/pc_chcek_on_s_20.png);
+}
+
+.agree label p {
+  display: flex;
+  align-items: center;
+}
+
+.text-primary {
+  color: #08A600;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.text-secondary {
+  color: #8e8e8e;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.terms {
+  height: 120px;
+  overflow: auto;
+  /* 넘치는 것을 자동으로 감추는 기능 밑에 엑스축 스크롤도 ㅇ벗어짐 */
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 16px;
+  color: #666;
+}
+
+.terms p {
+  margin-bottom: 10px;
+}
+
+.terms a {
+  color: #08A600;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+#red-alert {
+  visibility: hidden;
+  padding: 20px 0;
+  font-size: 14px;
+  color: red;
+}
+
+#cancel, #submit {
+  width: calc((100% - 8px) / 2);
+  height: 55px;
+  background-color: #08A600;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  border: none;
+}
+
+.group-join {
+  margin-top: 10px;
+}
+
+.group-join a:hover {
+  color: #08A600;
+}
+
+
+
+
+
+
+
