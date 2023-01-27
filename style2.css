@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  list-style: none;
+}
+
+.global-header {
+  max-width: 768px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+}
+
+.logo img {
+  width: 240px;
+}
+
+.info-form {
+  max-width: 468px;
+  margin: 0 auto;
+}
+
+.num-box {
+  display: flex;
+}
+
+.form {
+  font-size: 20px;
+  padding: 15px;
+  width: 450px;
+  height: 50px;
+  border: 1px solid rgb(193, 193, 193);
+}
+
+.id {
+  position: relative;
+}
+
+.password {
+  position: relative;
+}
+
+.password2 {
+  position: relative;
+}
+
+.letter {
+  margin-top: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.letter:nth-child(5) {
+  border-bottom: 1px solid transparent;
+}
+
+.address {
+  color: rgb(152, 152, 152);
+  position: absolute;
+  top: 48px;
+  left: 350px;
+}
+
+.warning, .warning2, .warning3 {
+  color: red;
+  display: none;
+}
+
+.congrat {
+  color: rgb(131, 219, 0);
+  display: none;
+}
+
+.warning4, .warning5, .warning6, .warning7 {
+  color: red;
+  display: none;
+}
+
+.lock, .lock1 {
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 48px;
+  left: 415px;
+}
+
+.lock {
+  background-image: url(./images/m_icon_pw_step_01.png);
+}
+
+.lock1 {
+  background-image: url(./images/m_icon_pw_step_02.png);
+}
+
+.form1 {
+  font-size: 20px;
+  padding: 10px;
+  width: 145px;
+  height: 50px;
+  color: gray;
+  border: 1px solid rgb(193, 193, 193);
+}
+
+.form2 {
+  width: 145px;
+  height: 50px;
+}
+
+label input[type="radio"] {
+  display: none;
+}
+
+.radio-box {
+  width: 145px;
+  height: 50px;
+  border: 1px solid rgb(193, 193, 193);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-box.radiochk {
+  background-color: #03C75A;
+  color: white;
+  font-weight: 700;
+}
+
+
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selection label:last-child {
+  margin-right: 22px;
+}
+
+
+.form3 {
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 15px;
+  width: 300px;
+  height: 50px;
+  border: 1px solid rgb(193, 193, 193);
+}
+
+.form4 {
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 50px;
+  width: 145px;
+  background-color: rgb(0, 206, 0);
+  border: 1px solid transparent;
+  color: white;
+  font-weight: 700;
+}
+
+.phone input.form {
+  margin-top: 10px;
+  background-color: gainsboro;
+}
+
+.form5 {
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 15px;
+  width: 450px;
+  height: 50px;
+  border: 1px solid rgb(193, 193, 193);
+}
+
+.form6 {
+  margin-top: 100px;
+  font-size: 30px;
+  padding: 5px;
+  width: 450px;
+  height: 50px;
+  border: 1px solid rgb(0, 206, 0);
+  background-color: rgb(0, 206, 0);
+  color: white;
+}
+
+
