@@ -66,8 +66,6 @@ $("#userpw input").focusout(function(){
 })
 
  
-
-
   // 비밀번호 재확인
   //#userpw-chk inpu에서 focusout 됐을 때 value값의 length가 0이라면 (조건)
   // #userpw-chk .warn에 빨간 글씨로 "필수 정보입니다."
@@ -83,10 +81,10 @@ $("#userpw input").focusout(function(){
     } else if(userpwchk == $("#userpw input").val()) {
       pwchkveri = true;
       $("#userpw-chk .warn").empty();
-      $("#userpw-chk .warn").html('<span class="text-green">일치합니다.</span>');
+      // 엠티를 넣은 이유는 빨간색 필수 정보입니다가 있을 경우 이것을 지우기 위해서이다.
       $("#userpw-chk .inputbox img").attr("src", "images/m_icon_pw_step_04.png");
     } else {
-      $("#userpw-chk .warn").empty();
+
       $("#userpw-chk .warn").html('<span class="text-red">일치하지 않습니다.</span>');
       $("#userpw-chk .inputbox img").attr("src", "images/m_icon_pw_step_04.png");
     }
@@ -112,6 +110,189 @@ $("#userpw input").focusout(function(){
       $("#username .warn").empty();
     }
   }) 
+
+
+  // 생년월일
+  // #year, #month, #date에서 focusout됐을 때 실행할 함수
+  // #year의 value length가 숫자 4가 아니라면(조건1)
+  // #birth .warn 빨간 글씨로 태어난 년도 4자리를 정확하게 입력하세요 (실행문1)
+
+  // #month의 값이 비어있으면(조건2)
+  // #birth .warn 빨간 글씨로 "태어난 월을 선택하세요." (실행문2)
+  // #month의 값이 비어있으면(조건3)
+  // #birth .warn 빨간 글씨로 "태어난 일(날짜) 2자리를 정확하게 입력하세요." (실행문3)
+  //만약 year month date의 값이 수사가 아니라면 -> 이때 isNaN 사용
+  // 빨간 글씨로 진짜임?> 질문
+  // 올해 기준으로 나이가 100 초과라면 (조건5)
+
+
+
+
+
+
+
+  // $("#year, #month, #date").focusout(function() {
+  //   let year = $("#year").val();
+  //   let month = $("#month").val();
+  //   let date = $("#date").val();
+  //   // 현재 날짜 및 시간
+  //   let now = new Date();
+  //   // Date 객체의 getTime() 메서드 1970년 1월 1일 00시 0분 00초 utc 부터 얼마나 경과한 밀리초를 반환한다.
+  //   // 이걸 가져오는 이유는 연도에 말도 안 되는 값을 입력하는 것을 막기 위해서이다.
+  //   let nowstamp = now.getTime();
+  //   // 현재 날짜 및 시간에서 현재 연도의 네 자리값을 변수에 할당한다는 의미이다.
+  //   now = now.getFullYear();
+  //   console.log(now);
+  //   // let year = $("#year").val();
+  //   // let month = $("#month").val();
+  //   // let date = $("#date").val();
+  //   // 값을 birth에 입력하는 것이다.
+  //   let birth = new Date(year, month, date);
+  //   birth = birth.getTime();
+  //   birthveri = false;
+
+  //   // year.length가 4가 아닐 때
+  //   if(year.length != 4) {
+  //      $("#birth .warn").html('<span class="text-red">태어난 년도 4자리를 정확하게 입력해주세요.</span>');
+  //   } else if(month.length == 0) {
+  //     $("#birth .warn").html('<span class="text-green">태어난 월을 선택하세요.</span>');
+  //   } else if(date.length == 0) {
+  //     $("#birth .warn").html('<span class="text-red">태어난 일(날짜) 2자리를 정확하게 입력하세요.</span>');
+  //   } else if(isNaN(year, month, date)) {
+  //     // isNaN(year, month, date) 얘네 셋이 숫자가 아닐 때 라는 의미
+  //     $("#birth .warn").html('<span class="text-red">생년월일을 다시 확인해주세요.</span>');
+  //   } else if(now - year > 100) {
+  //     $("#birth .warn").html('<span class="text-red">정말이세요?</span>');
+  //   } else if(nowstamp < birth) {
+  //     $("#birth .warn").html('<span class="text-red">미래에서 오셨군요 ^^</span>');
+  //   } else {
+  //     birthveri = true;
+  //     $("#birth .warn").empty();
+  //   }
+  // })
+
+
+  function para(text) {
+    // para라는 함수의 text에 입력된 값이 스팬 레드에 입력되게 하겠다.
+    $("#birth .warn").html('<span class="text-red">' + text + '</span>');
+  }
+
+  $("#year, #month, #date").focusout(function() {
+    let year = $("#year").val();
+    let month = $("#month").val();
+    let date = $("#date").val();
+    // 현재 날짜 및 시간
+    let now = new Date();
+    // Date 객체의 getTime() 메서드 1970년 1월 1일 00시 0분 00초 utc 부터 얼마나 경과한 밀리초를 반환한다.
+    // 이걸 가져오는 이유는 연도에 말도 안 되는 값을 입력하는 것을 막기 위해서이다.
+    let nowstamp = now.getTime();
+    // 현재 날짜 및 시간에서 현재 연도의 네 자리값을 변수에 할당한다는 의미이다.
+    now = now.getFullYear();
+    console.log(now);
+    // let year = $("#year").val();
+    // let month = $("#month").val();
+    // let date = $("#date").val();
+    // 값을 birth에 입력하는 것이다.
+    let birth = new Date(year, month, date);
+    birth = birth.getTime();
+    birthveri = false;
+
+    // year.length가 4가 아닐 때
+    if(year.length != 4) {
+      para("태어난 년도 4자리를 정확하게 입력해주세요.");
+      //  $("#birth .warn").html('<span class="text-red">태어난 년도 4자리를 정확하게 입력해주세요.</span>');
+    } else if(month.length == 0) {
+      para("태어난 월을 선택하세요.");
+      // $("#birth .warn").html('<span class="text-green">태어난 월을 선택하세요.</span>');
+    } else if(date.length == 0 || date > 31 || date <= 0 ) {
+      para("태어난 일(날짜) 2자리를 정확하게 입력하세요.");
+      // $("#birth .warn").html('<span class="text-red">태어난 일(날짜) 2자리를 정확하게 입력하세요.</span>');
+    } else if(isNaN(year * month * date)) {
+      para("생년월일을 다시 확인해주세요.");
+      // else if(isNaN(year, month, date)) {
+      //   para("생년월일을 다시 확인해주세요.");
+      // 첨에 이거였는데 else if(isNaN(year * month * date))로 바꾼 이유는 셋다 숫자가 되어야 숫자가 나오기 때문이다.
+      // 중간에 이상한 글자가 들어가면 계산이 안 되기 때문이다.
+      // 처음의 경우 year만 숫자여도 별 문제 없이 작동을 한다 그래서 수정한 것이다.
+
+
+      // isNaN(year, month, date) 얘네 셋이 숫자가 아닐 때 라는 의미
+      // $("#birth .warn").html('<span class="text-red">생년월일을 다시 확인해주세요.</span>');
+    } else if(now - year > 100) {
+      para("정말이세요?");
+      // $("#birth .warn").html('<span class="text-red">정말이세요?</span>');
+    } else if(nowstamp < birth) {
+      para("미래에서 오셨군요 ^^");
+      // $("#birth .warn").html('<span class="text-red">미래에서 오셨군요 ^^</span>');
+    } else {
+      birthveri = true;
+      para("");
+      // $("#birth .warn").empty();
+    }
+  })
+
+// 성별
+// #gender .inputbox를 클릭했을 때
+
+$("#gender .inputbox").click(function(e) {
+  // radio의 기본 클릭동작 해제
+  e.preventDefault();
+  $("#gender .inputbox").removeClass('btn-primary');
+  $("#gender .inputbox input").removeAttr('checked');
+  $(this).addClass('btn-primary');
+  // 클릭된 인풋박스의 자식 중에 input 태그를 의미
+  $(this).children('input').attr('checked', 'checked');
+  genderveri = true;
+})
+ 
+// 본인 확인 이메일(선택)
+
+$("#usermail input").focusout(function() {
+   let mail = $(this).val();
+   let redExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+   mailveri = true;
+   if(mail.lenght == 0) {
+    $("#usermail .warn").empty();
+    // 이걸 empty로 만든 이유는 첨에 잘못 만들었을 때 잘몬만든 메일입니다라는 문구가 뜨게 할 것이다.
+    // 그 문구를 지우게 하기 위해서 엠티를 넣은 것이다.
+   } else if(!redExp.test(mail)) {
+    // else if(!redExp.test(mail)) -> mail이 redExp의 조건을 만족하지 않았을 경우
+    $("#usermail .warn").html('<span class="text-red">이메일 주소를 다시 확인해주세요</span>');
+    mailveri = false;
+   } else {
+    $("#usermail .warn").empty();
+   }
+})
+
+// 휴대전화
+// #phonenum input에서 focusout 됐을 때
+// 그것의 value.length가 0이라면 (조건1)
+// #phone .warn "필수 정보입니다." (실행문1)
+$("#phonenum input").focusout(function() {
+  if($(this).val().length == 0) {
+    $("#phone .warn").html('<span class="text-red">필수 정보입니다.</span>');
+  } else {
+    $("#phone .warn").empty();
+  }
+})
+
+// #veribtn을 클릭했을 때 실행할 함수
+// #phonenum input value가 10-11자리가 아니라면 (조건1)
+// 
+$("#veribtn").click(function() {
+  let verifi = $("#phonenum input").val();
+  verifi = verifi.replace(/[^0-9]/g, '');
+  // verifi = verifi.replace(/[^0-9]/g, ''); 입력된 것 중에 모든 문자를 빈칸으로 대체하겠다
+  // replace는 문자열 치환 매소드이다.
+  $("#phonenum input").val(verifi);
+  //지금 위 코드의 의미는 우선 input에 입력된 값을 verifi에 넣는다.
+  // 그 다음 verifi의 문자와 숫자를 다 제거한 것을 다시 verifi라 명칭하자
+  // 마지막으로 $("#phonenum input").val();에 문자와 숫자를 다 제거한 verifi를 입력한다.
+  if(verifi.length < 10 || verifi.length > 11) {
+
+  }
+})
+
 
 
 
