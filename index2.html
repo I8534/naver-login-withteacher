@@ -169,26 +169,21 @@
             <p>주소</p>
             <div id="postnum">
               <div class="inputbox">
-                <input type="text" id="" placeholder="우편번호">
+                <input type="text" id="sample6_postcode" placeholder="우편번호">
               </div>
-              <button type="button" id="postnum-btn" class="btn-primary">우편번호 찾기</button>
+              <button type="button" onclick="sample6_execDaumPostcode()" id="postnum-btn" class="btn-primary">우편번호 찾기</button>
             </div>
             <div class="inputbox">
-              <input type="text" id="" placeholder="주소">
+              <input type="text" id="sample6_address" placeholder="주소">
             </div>
 
             <div class="inputbox">
-              <input type="text" id="" placeholder="상세주소">
+              <input type="text" id="sample6_detailAddress" placeholder="상세주소">
             </div>
             
             <div class="inputbox">
-              <input type="text" id="" placeholder="참고항목">
-            </div>
-            
-            <div class="inputbox">
-              <input type="text" id="" placeholder="주소">
-            </div>
-            
+              <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+            </div> 
           </label>
         </div>
 
@@ -196,6 +191,7 @@
       </form>
     </section>
   </div>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="./script3.js"></script>
 </body>
 </html>
