@@ -285,14 +285,68 @@ $("#veribtn").click(function() {
   // verifi = verifi.replace(/[^0-9]/g, ''); 입력된 것 중에 모든 문자를 빈칸으로 대체하겠다
   // replace는 문자열 치환 매소드이다.
   $("#phonenum input").val(verifi);
+
+  
+
   //지금 위 코드의 의미는 우선 input에 입력된 값을 verifi에 넣는다.
   // 그 다음 verifi의 문자와 숫자를 다 제거한 것을 다시 verifi라 명칭하자
   // 마지막으로 $("#phonenum input").val();에 문자와 숫자를 다 제거한 verifi를 입력한다.
-  if(verifi.length < 10 || verifi.length > 11) {
 
+  let veri1;
+  //우선 변수만 선언했다.
+  if(verifi.length < 10 || verifi.length > 11) {
+    veril = false
+    // 우선 전송되는 것을 막기 위해
+  } else {
+    veri1 = true
   }
+
+  let veri2;
+  if(!isNaN(verifi)) {// 즉 입력된 verifi가 숫자가 아니라면 이라는 뜻 !는 부정을 의미
+    veri2 = true;
+  } else {
+    veri2 = false;
+  }
+
+  // 1. 전화번호를 형식에 맞게 입력하면 인증번호를 발급
+// 2. 인증번호를 발급 받으면 인증번호 입력칸을 활성화 해얗 ㅏㄴ다.
+// 3. 전화번호를 형식에 맞지 않게 입력했을 경우 인증번호 입력칸 비활성화
+
+// veril1 && veri2 모두 true일 경우(조건1)
+// 인증번호를 보내고 .warn에 "인증번호가 발송되었습니다."가 실행되었습니다. (실행문1)
+// 인증번호 입력칸을 활성화 (실행문2)
+if(veri1 && veri2) {
+  //if(veri1 && veri2)가 의미하는 바는 veri1과 veri2가 사실일 때라는 의미이다.
+  $("#phone .warn").html('<span class="text-green">인증번호가 발송되었습니다.</span>');
+  $(".disinput").removeClass("disinput");
+  $("#veritext").removeAttr("disabled");
+  // $("#veritext").removeAttr("disabled"); 대신에 $(".disinput").removeAttr("disabled");
+  //입력하면 이미 disinput class가 삭제되서 disabled 없에라는 명령어가 안 먹힌다. 왜? 없으니깐
+} else {
+  $("#phone .warn").html('<span class="text-red">형식에 맞지 않는 번호입니다.</span>');
+  $("#veritext").attr("disabled", "disabled");
+  $("#veritext").parent(".inputbox").addClass('disinput');
+}
+
 })
 
+// #veritext에서 focusout 됐을 때 
+// 그 값이 "1234"와 같다면
+$("#veritext").focusout(function(){
+  phoneveri = false;
+  if($(this).val() == "1234") {
+    phoneveri = true;
+    $("#phone .warn").html('<span class="text-green">인증되었습니다.</span>');
+    $(this).next("div").empty();
+  } else {
+    // 불일치, x 아이콘
+    $("#veritext").next("div").addClass("disagree");
+    // next는 형제요소를 의미하는 것이다.
+    $(".disagree").html('<span class="text-red">불일치</span>');
+    $("#phone .warn").html('<span class="text-red">인증번호를 다시 확인해주세요.</span>');
+    $(this).parent('.inputbox').addClass('border-red');
+  }
 
 
 
+})

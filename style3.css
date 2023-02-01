@@ -154,6 +154,38 @@ a {
   margin: 15px 0;
 }
 
+.disagree {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.disagree::before,
+.disagree::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: red;
+  left: 50%;
+  top: 50%;
+}
+
+.disagree::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.disagree::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.border-red {
+  border-color: red;
+}
+
 
 
 
